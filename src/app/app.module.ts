@@ -10,11 +10,20 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { HttpModule } from '@angular/http';
+
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpModule,
+    IonicModule.forRoot()
+    
+  ],
   providers: [
     StatusBar,
     SplashScreen,
