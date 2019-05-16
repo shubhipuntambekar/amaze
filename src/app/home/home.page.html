@@ -6,33 +6,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col  *ngFor="let newsletter of newsletters" col-6 no-padding fixed>
+<ion-content class="container">
+  <ion-grid>
+    <ion-row >
+      <ion-col *ngFor="let newsletter of newsletters" col-6 no-padding fixed>
           <ion-card>
-              <img src="../../assets/img/amaze_splashscreen.jpg"/>
-              <ion-card-content class="fixline">
-                <ion-card-title>
+              <!-- <img [src]="newsletter.image"/>  -->
+              <img src="{{newsletter.image}}"/> 
+              <ion-card-content class="fixline" (click)="openNewsletter()">
+                <ion-card-title class="title">
                   {{newsletter.title}}
                 </ion-card-title>
                 <p>{{newsletter.description}}</p> 
               </ion-card-content>
-              <!-- <hr color=#C0C0C0 height="100"> -->
-              <!-- <ion-row class="ion-row">
+              <hr color=#C0C0C0 height="100">
+              <ion-row class="ion-row">
                   <ion-col size="6">
-                    <button ion-button icon-start full clear small class="ion-col">
+                    <button ion-button icon-start full clear small class="ion-col-like" (click)="updateLike(newsletter.key)">
                       <ion-icon name="thumbs-up"></ion-icon>
                       <div>{{newsletter.likes}} likes</div>
                     </button>
                   </ion-col>
                   <ion-col size="6">
-                    <button ion-button icon-start full large class="ion-col">
+                    <button ion-button icon-start full large class="ion-col-download" (click)="downloadNewsletter()">
                       <ion-icon name="download"></ion-icon>
                       <div>Download</div>
                     </button>
                   </ion-col>
-                </ion-row> -->
+                </ion-row>
             </ion-card>
       </ion-col>
     </ion-row>

@@ -1,15 +1,41 @@
+.container{
+
+}
 .classpicker{
     visibility: hidden;
 }
 .ion-row{
     //margin: 0 17%;
-    align-items: center
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    column-count: 2;
+    // margin-right: 10px;
+    // margin-left: 0px;
+    //padding: 0;
 }
-.ion-col{
+.ion-col-like{
     background-color: white;
     color:cadetblue;
+    font-size: 0.8em;
+    margin: 0px;
+    padding: auto;
+    float: left;
+}
+.ion-col-download{
+    background-color: white;
+    color:cadetblue;
+    font-size: 0.8em;
+    margin: 0px;
+    padding: auto;
+    float: right;
+}
+.title{
+    font-size: 1.2em;
+    font-weight: 650; 
+    letter-spacing: 0.1ch;
+    color: cadetblue;
 }
 .fixline{
-    height: 90px;
     margin-bottom: 7px;
 }
