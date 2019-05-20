@@ -1,6 +1,3 @@
-.container{
-
-}
 .classpicker{
     visibility: hidden;
 }
@@ -17,6 +14,7 @@
 .ion-col-like{
     background-color: white;
     color:cadetblue;
+    // color:var(--color);
     font-size: 0.8em;
     margin: 0px;
     padding: auto;
@@ -38,4 +36,7 @@
 }
 .fixline{
     margin-bottom: 7px;
+}
+.badge{
+    position: absolute;
 }
