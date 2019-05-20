@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import * as firebase from 'Firebase';
 import { Platform } from '@ionic/angular';
@@ -21,20 +21,30 @@ export class HomePage {
   @ViewChild('dateTime') sTime;
   newsletters = [];
   ref = firebase.database().ref('newsletters/');
-  isLiked : boolean;
+  isLiked = false;
+  lastKey = -1;
+  likeManager = [{key : 0, value:false},
+    {key : 1, value:false},
+    {key : 2, value:false},
+    {key : 3, value:false},
+    {key : 4, value:false},
+    {key : 5, value:false},
+    {key : 6, value:false},
+    {key : 7, value:false},
+    {key : 8, value:false}
+  ];
  
   constructor(public router: Router, public loadingController: LoadingController, private platform: Platform, private file: File, private ft: FileTransfer, 
-    private fileOpener: FileOpener, private document: DocumentViewer) {
+    private fileOpener: FileOpener, private document: DocumentViewer, private toastController : ToastController) {
     this.ref.on('value', resp => {
       this.newsletters = [];
       this.newsletters = snapshotToArray(resp);
     });
-    
   }
 
   openNewsletter(url){
     console.log("card content clicked.");
-    //let filePath = this.file.applicationDirectory + 'www/assets/newsletters';
+   //let filePath = this.file.applicationDirectory + 'www/assets/newsletters';
     //let url = this.file.applicationDirectory + 'www/assets/newsletters/AmazeEdition8.pdf';
     
     window.open(url);
@@ -81,13 +91,27 @@ export class HomePage {
   }
 
   updateLike(key){
-    var templike; 
-    this.ref.orderByKey().equalTo(key).on("child_added", function(snapshot) {
-      var newLike = snapshot.val();
-      templike = parseInt(newLike.likes) + 1;
-      firebase.database().ref('newsletters/'+key).update({"likes" : templike});
-
+    var templike;
+    if(this.likeManager[key].value==false){
+      if(!this.isLiked){
+        this.ref.orderByKey().equalTo(key).on("child_added", function(snapshot) {
+          var newLike = snapshot.val();
+          templike = parseInt(newLike.likes) + 1;
+          firebase.database().ref('newsletters/'+key).update({"likes" : templike});
+        });
+        this.likeManager[key].value=true;
+      }    
+    } else{
+       this.presentToast();
+    }
+    
+  }
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'You have already liked the newsletter!',
+      duration: 2000
     });
+    toast.present();
   }
 }
 

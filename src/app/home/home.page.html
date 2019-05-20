@@ -43,16 +43,13 @@
     </ion-row>
   </ion-grid>
   
-  <ion-item id="calendar" class="classpicker">
-    <ion-label>Monthly Edition</ion-label>
-    <ion-datetime #dateTime display-format="MMMM" animated="true"></ion-datetime>
-  </ion-item>
+  
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="danger">
+    <ion-fab-button color="secondary">
       <ion-icon name="more"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button color="warning" (click)="fabFeedback()">
+      <ion-fab-button color="primary" (click)="fabFeedback()">
         <ion-icon name="bug"></ion-icon>
       </ion-fab-button>
       <ion-fab-button color="warning" (click)="fabCalendar()">
