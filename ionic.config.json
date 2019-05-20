@@ -3,6 +3,8 @@
   "integrations": {
     "cordova": {}
   },
+
   "type": "angular",
   "id": "9c8f3c2b"
+
 }

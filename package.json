@@ -45,7 +45,11 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "~0.13.8",
+<<<<<<< HEAD
     "@angular-devkit/build-angular": "^0.13.9",
+=======
+    "@angular-devkit/build-angular": "~0.13.8",
+>>>>>>> a84d9d2aa232484802e335cab1f8d15bd5c1eeef
     "@angular-devkit/core": "~7.3.8",
     "@angular-devkit/schematics": "~7.3.8",
     "@angular/cli": "~7.3.8",
@@ -94,4 +98,8 @@
       "browser"
     ]
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a84d9d2aa232484802e335cab1f8d15bd5c1eeef
