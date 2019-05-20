@@ -1,0 +1,2 @@
+# amaze
+newsletter application
