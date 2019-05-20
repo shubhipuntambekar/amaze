@@ -7,13 +7,17 @@
 </ion-header>
 
 <ion-content class="container">
+  
+<!-- Item with badge on left and right -->
   <ion-grid>
     <ion-row >
-      <ion-col *ngFor="let newsletter of newsletters" col-6 no-padding fixed>
+      <ion-col *ngFor="let newsletter of newsletters?.slice().reverse()" col-6 no-padding fixed>
           <ion-card>
               <!-- <img [src]="newsletter.image"/>  -->
+              <ion-badge class="badge" slot="start" color="danger">{{newsletter.badge}}</ion-badge>
               <img src="{{newsletter.image}}"/> 
-              <ion-card-content class="fixline" (click)="openNewsletter()">
+              
+              <ion-card-content class="fixline" (click)="openNewsletter(newsletter.pdfUrl)">
                 <ion-card-title class="title">
                   {{newsletter.title}}
                 </ion-card-title>
@@ -28,7 +32,7 @@
                     </button>
                   </ion-col>
                   <ion-col size="6">
-                    <button ion-button icon-start full large class="ion-col-download" (click)="downloadNewsletter()">
+                    <button ion-button icon-start full large class="ion-col-download" (click)="downloadNewsletter(newsletter.pdfUrl)">
                       <ion-icon name="download"></ion-icon>
                       <div>Download</div>
                     </button>
