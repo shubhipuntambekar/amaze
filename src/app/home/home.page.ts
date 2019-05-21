@@ -7,7 +7,7 @@ import { File } from '@ionic-native/File/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer/ngx';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
-
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
   
 @Component({
@@ -35,7 +35,7 @@ export class HomePage {
   ];
  
   constructor(public router: Router, public loadingController: LoadingController, private platform: Platform, private file: File, private ft: FileTransfer, 
-    private fileOpener: FileOpener, private document: DocumentViewer, private toastController : ToastController) {
+    private fileOpener: FileOpener, private document: DocumentViewer, private toastController : ToastController, private emailComposer: EmailComposer) {
     this.ref.on('value', resp => {
       this.newsletters = [];
       this.newsletters = snapshotToArray(resp);
@@ -82,13 +82,22 @@ export class HomePage {
 
   fabFeedback(){
     console.log("Feedback Button Clicked!!");
-    
+    let email = {
+      to: 'shubhi.puntambekar@zensar.com',
+      cc: 'shubhi.puntambekar@zensar.com',
+      subject: 'Feedback/Bug in Amaze Application',
+      body: 'Feedbacks suggested/ Bugs found:',
+      isHtml: true
+    }
+    this.emailComposer.isAvailable().then((available: boolean) =>{
+      if(available) {
+        //Now we know we can send
+        this.emailComposer.open(email);
+      }
+     });
   }
 
-  fabCalendar(){
-    console.log("Monthly Button Clicked!!");
-    this.sTime.open();
-  }
+  
 
   updateLike(key){
     var templike;

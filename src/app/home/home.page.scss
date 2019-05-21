@@ -1,38 +1,39 @@
-.classpicker{
-    visibility: hidden;
+.heading{
+    text-align: center;
+    color: darkcyan;
 }
 .ion-row{
-    //margin: 0 17%;
     align-items: center;
     display: flex;
     justify-content: space-between;
     column-count: 2;
-    // margin-right: 10px;
-    // margin-left: 0px;
-    //padding: 0;
+
 }
 .ion-col-like{
     background-color: white;
-    color:cadetblue;
-    // color:var(--color);
-    font-size: 0.8em;
+    color:darkcyan;
+    font-size: 0.75em;
     margin: 0px;
     padding: auto;
     float: left;
 }
 .ion-col-download{
     background-color: white;
-    color:cadetblue;
-    font-size: 0.8em;
+    color:darkcyan;
+    font-size: 0.75em;
     margin: 0px;
     padding: auto;
     float: right;
 }
 .title{
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 650; 
-    letter-spacing: 0.1ch;
-    color: cadetblue;
+    letter-spacing: 0.09ch;
+    color: darkcyan;
+    //font-family: 'Open Sans Condensed';
+}
+.description{
+    font-size: 0.85em;
 }
 .fixline{
     margin-bottom: 7px;
@@ -40,6 +41,6 @@
 .badge{
     position: absolute;
 }
-.ion-button-main{
-    color: greenyellow;
+.fab-icon{
+    opacity: 0.5;
 }
